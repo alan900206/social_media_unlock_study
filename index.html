@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>幾點了，還在看手機？</title>
+<meta name="description" content="健康資訊管理期中報告：每日解鎖次數與學生讀書、運動時間的關係，以及自律 app 設計構想。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafaf8;--fg:#1f2328;--muted:#5b6470;--line:#e3e3df;--accent:#4b6584;--accent2:#7fbf9a;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16181b;--fg:#e8e8e6;--muted:#a0a7b0;--line:#2c3036;--accent:#8fb0d6;--accent2:#8fd1ab;--card:#1e2125}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.75}
+.wrap{max-width:860px;margin:0 auto;padding:48px 16px 80px}
+header h1{font-size:clamp(28px,5vw,42px);line-height:1.25;margin:0 0 8px}
+header p.sub{font-size:20px;color:var(--muted);margin:0 0 16px}
+.meta{font-size:14px;color:var(--muted)}
+h2{font-size:24px;margin:56px 0 12px;padding-top:12px;border-top:1px solid var(--line)}
+h3{font-size:18px;margin:32px 0 8px;color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:28px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.kpi b{display:block;font-size:30px;line-height:1.2;color:var(--accent)}
+.kpi span{font-size:14px;color:var(--muted)}
+.viz{width:100vw;position:relative;left:50%;transform:translateX(-50%);max-width:1240px;padding:0 16px}
+.viz iframe{width:100%;height:860px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.viz p{font-size:14px;color:var(--muted);text-align:center}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:12px 0}
+th,td{border-bottom:1px solid var(--line);padding:8px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+a{color:var(--accent)}
+footer{margin-top:64px;font-size:14px;color:var(--muted)}
+@media (max-width:700px){.viz iframe{height:600px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>幾點了，還在看手機？！</h1>
+<p class="sub">滑手機偷走了你多少時間？</p>
+<p class="meta">健康資訊管理 期中報告 · Alan · 2026 年 11 月</p>
+</header>
+
+<div class="kpis">
+<div class="kpi"><b>171 次</b><span>學生平均每日解鎖次數</span></div>
+<div class="kpi"><b>r = −0.85</b><span>解鎖次數與讀書時數的相關</span></div>
+<div class="kpi"><b>71%</b><span>花在社群媒體的時間比讀書多</span></div>
+</div>
+
+<h2>一、背景</h2>
+<p>我自己的社群媒體使用時間一直偏高，而且大多數時候並不是「想用」才打開，而是無意識地拿起手機、解鎖、滑幾下又放下，一天下來重複很多次。我試過 iPhone 內建的螢幕使用時間限制，也用過專門的自律 app，但它們都擋不住這種無意識的開啟。內建的螢幕使用時間甚至會出錯，我的手機上 Instagram 永遠顯示使用 24 小時，連自我監測的數據都不可靠。</p>
+<p>比起「每天用了幾小時」，「每天解鎖幾次」更能反映這種片段、無意識的使用習慣，因此本報告把重點放在解鎖次數上。</p>
+
+<h2>二、要解決的問題</h2>
+<p>最終目標是用 vibe coding 做出一個符合自己需求的自律 app。期中階段先用公開資料回答以下問題，確認 app 該從哪裡下手：</p>
+<ol>
+<li>每日解鎖次數越多的學生，讀書時間是否越少？</li>
+<li>高頻解鎖的學生，運動時間是否也被犧牲？</li>
+<li>有沒有學生能夠「滑很多、也讀很多」？</li>
+</ol>
+
+<h2>三、互動儀表板</h2>
+</div>
+<div class="viz">
+<iframe src="https://public.tableau.com/views/_17957643213190/sheet3?:showVizHome=no&:embed=true&:toolbar=bottom" title="Tableau 互動儀表板" loading="lazy" allowfullscreen></iframe>
+<p>滑鼠移到圖上可看細節。<a href="https://public.tableau.com/app/profile/chih.yung.wang/viz/_17957643213190/sheet3" target="_blank" rel="noopener">在 Tableau Public 開啟</a></p>
+</div>
+<div class="wrap" style="padding-top:0">
+
+<h2>四、方法</h2>
+<h3>資料來源</h3>
+<p>Kaggle「Student Social Media &amp; Mental Health Impact」資料集（CC BY-SA），共 5,000 名 18–24 歲學生（高中 450、大學 3,632、研究所 918）。資料集沒有成績欄位，因此以每日讀書時數作為學業投入的指標。</p>
+<h3>資料整理</h3>
+<ul>
+<li>所有欄位皆無缺值。</li>
+<li>運動時數有 10 筆為負值（−0.1 至 −0.4 小時），修正為 0 並加上標記欄位。</li>
+<li>新增分組：每日使用時數 4 組、每日解鎖次數 5 組、讀書時數 4 組。</li>
+<li>新增衍生欄位：平均幾分鐘解鎖一次（假設每天清醒 16 小時，= 960 ÷ 解鎖次數）。</li>
+</ul>
+<p>整理後的資料：<a href="data/student_social_media_clean.csv">student_social_media_clean.csv</a>（5,000 筆 × 21 欄）</p>
+<h3>工具</h3>
+<p>以生成式 AI（Claude）協助資料檢查、清理與衍生欄位設計；以 Tableau 製作互動式儀表板並發佈到 Tableau Public。</p>
+
+<h2>五、發現</h2>
+<h3>1. 解鎖越多，讀書越少</h3>
+<p>每日解鎖次數與讀書時數呈明顯負相關（r = −0.85），在高中（−0.89）、大學（−0.84）、研究所（−0.89）三組都看得到相同趨勢。依迴歸線推估，每少解鎖約 30 次，讀書時間約多 1 小時。極高使用組（≥7 小時）的讀書時間已降到約 1 小時，呈現「觸底」現象。</p>
+
+<h3>2. 學業被吃掉得最多</h3>
+<table>
+<tr><th>每日解鎖</th><th>平均讀書（小時）</th><th>平均運動（小時）</th></tr>
+<tr><td>&lt;120 次</td><td>5.50</td><td>2.39</td></tr>
+<tr><td>120–159 次</td><td>4.02</td><td>2.04</td></tr>
+<tr><td>160–199 次</td><td>2.57</td><td>1.67</td></tr>
+<tr><td>200–239 次</td><td>1.43</td><td>1.32</td></tr>
+<tr><td>≥240 次</td><td>1.06</td><td>1.05</td></tr>
+</table>
+<p>從最少到最多解鎖組，讀書時間減少約 81%，運動減少約 56%。低使用組平均每 9.6 分鐘解鎖一次，極高使用組每 4.1 分鐘就解鎖一次。</p>
+
+<h3>3. 沒有人能同時滑很多又讀很多</h3>
+<p>熱力圖中，沒有任何「每天用 ≥7 小時、又讀書 ≥4 小時」的學生；也沒有「用不到 3 小時、讀書卻不到 2 小時」的學生。整體 71% 的學生花在社群媒體的時間比讀書多（高中 75%、大學 73%、研究所 63%）。</p>
+
+<h3>小結</h3>
+<p>不同平台、不同使用目的之間的差異都很小（平均解鎖都落在 165–183 次），問題的關鍵在於<b>打開手機的頻率</b>，而不是滑的是哪個 app。</p>
+
+<h2>六、限制</h2>
+<ul>
+<li>此資料集很可能是合成資料，變數間相關性高得不自然（例如使用時數與解鎖次數 r = 0.96），結果只能視為趨勢參考。</li>
+<li>本分析為相關性分析，不能推論因果。</li>
+<li>以讀書時數代表學業投入，無法直接反映學習成效。</li>
+</ul>
+
+<h2>七、下一步：自律 app 設計</h2>
+<p>設計重點放在「減少解鎖次數」與「增加開啟的阻力」，而不是只封鎖特定 app：</p>
+<ol>
+<li><b>鎖定與多步驟解鎖</b>：開啟被限制的 app 前需要完成約三個步驟，打斷無意識的開啟；解鎖後有使用時限。</li>
+<li><b>睡前時段</b>：可設定睡前滑短影音的額度，時間到就鎖到隔天。</li>
+<li><b>起床緩衝</b>：起床後一段時間內同樣限制使用。</li>
+<li><b>（加分）防貪睡鬧鐘</b>：必須錄到自己正在刷牙的畫面才能關閉鬧鐘。</li>
+</ol>
+<p>期末預計以 iOS Screen Time API 實作可真正鎖定 app 的版本，並記錄自己使用前後的解鎖次數變化作為成效評估。</p>
+
+<footer>資料來源：Kaggle Student Social Media &amp; Mental Health Impact（n = 5,000，合成資料，CC BY-SA）。</footer>
+</div>
+</body>
+</html>
